@@ -1,0 +1,19 @@
+body {
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+p {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    margin: 8px;
+    padding: 8px;
+    color: #7C8CFD;
+    font-family: sans-serif;
+    text-align: right;
+    font-size: 20pt;
+    background-color: rgba(0,0,0,0.75);
+    border-radius: 8px;
+}

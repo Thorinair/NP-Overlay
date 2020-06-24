@@ -1,0 +1,2 @@
+# NP Overlay
+NP Overlay is a simple website designed to pull Now Playing data from [Princess Luna](https://github.com/Thorinair/Princess-Luna/) and display it in a stylish way on Thorinair's [Twitch stream](https://www.twitch.tv/thorinair).

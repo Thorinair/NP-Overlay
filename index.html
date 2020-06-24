@@ -1,0 +1,31 @@
+<html>
+<head>
+    <link href='style.css' rel='stylesheet'>
+</head>
+<script src='key.js'></script>
+<body>
+    <p><b>Now Playing:</b> <span id="np">Test</span></p>
+</body>
+<script>
+    function refresh() {
+        xhr = new XMLHttpRequest();
+        var url = "http://luna.thorinair.net:" + port + "/?action=np&key=" + key;
+        xhr.open("GET", url, true);
+        xhr.onreadystatechange = function () { 
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+
+                document.getElementById("np").innerHTML = response.nowplaying;
+            
+                window.setTimeout(refresh, 1000);
+            }
+        }
+        xhr.onerror = function () {
+            window.setTimeout(refresh, 1000);
+        };
+        xhr.send();
+    }
+
+    refresh();
+</script>
+</html>
