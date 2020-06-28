@@ -1,0 +1,37 @@
+body {
+    margin: 0px auto;
+    overflow: hidden;
+}
+
+p {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 280;
+    margin: 8px;
+    padding: 8px;
+    color: #7C8CFD;
+    font-family: sans-serif;
+    text-align: left;
+    font-size: 16pt;
+    background-color: rgba(16,11,42,0.75);
+    border-radius: 8px;
+}
+
+span {
+    font-size: 12pt;
+}
+
+span div {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+
+#lyrics {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+#lyrics.fade {
+  opacity: 0;
+}

@@ -12,6 +12,21 @@ function getInvisibleNum() {
         return 1;
 }
 
+function insertNp(text) {    
+    var np = document.getElementById("np" + getVisibleNum());
+    var np_data = document.getElementById("np" + getVisibleNum() + "_data");
+
+    if (np_data.innerHTML.trim() != text.trim()) {
+        var npx = document.getElementById("np" + getInvisibleNum());
+        var npx_data = document.getElementById("np" + getInvisibleNum() + "_data");
+
+        npx_data.innerHTML = text;
+
+        np.classList.toggle('fade');
+        npx.classList.toggle('fade');
+    }
+}
+
 function refresh() {
     xhr = new XMLHttpRequest();
     var url = "http://luna.thorinair.net:" + port + "/?action=np&key=" + key;
@@ -19,23 +34,14 @@ function refresh() {
     xhr.onreadystatechange = function () { 
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = JSON.parse(xhr.responseText);
-
-            var np = document.getElementById("np" + getVisibleNum());
-            var np_data = document.getElementById("np" + getVisibleNum() + "_data");
-
-            if (np_data.innerHTML.trim() != response.nowplaying.trim()) {
-
-                var npx = document.getElementById("np" + getInvisibleNum());
-                var npx_data = document.getElementById("np" + getInvisibleNum() + "_data");
-
-                npx_data.innerHTML = response.nowplaying;
-
-                np.classList.toggle('fade');
-                npx.classList.toggle('fade');
-            }
+            insertNp(response.nowplaying);
         }
     }
     xhr.onerror = function () {
+        insertNp("No Data");
+    };
+    xhr.ontimeout = function () {
+        insertNp("No Data");
     };
     xhr.send();
 
