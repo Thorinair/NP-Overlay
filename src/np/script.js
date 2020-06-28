@@ -1,3 +1,5 @@
+var npOld = "No Data";
+
 function getVisibleNum() {
     if (document.getElementById("np1").classList.contains("fade"))
         return 2;
@@ -16,10 +18,11 @@ function insertNp(text) {
     var np = document.getElementById("np" + getVisibleNum());
     var np_data = document.getElementById("np" + getVisibleNum() + "_data");
 
-    if (np_data.innerHTML.trim() != text.trim()) {
+    if (npOld.trim() != text.trim()) {
         var npx = document.getElementById("np" + getInvisibleNum());
         var npx_data = document.getElementById("np" + getInvisibleNum() + "_data");
 
+        npOld = text;
         npx_data.innerHTML = text;
 
         np.classList.toggle('fade');
