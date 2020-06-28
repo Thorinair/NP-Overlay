@@ -17,3 +17,21 @@ p {
     background-color: rgba(16,11,42,0.75);
     border-radius: 8px;
 }
+
+#np1 {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+#np1.fade {
+  opacity: 0;
+}
+
+#np2 {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+#np2.fade {
+  opacity: 0;
+}
