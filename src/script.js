@@ -1,4 +1,16 @@
-var element = 1;
+function getVisibleNum() {
+    if (document.getElementById("np1").classList.contains("fade"))
+        return 2;
+    else
+        return 1;
+}
+
+function getInvisibleNum() {
+    if (document.getElementById("np2").classList.contains("fade"))
+        return 2;
+    else
+        return 1;
+}
 
 function refresh() {
     xhr = new XMLHttpRequest();
@@ -8,18 +20,13 @@ function refresh() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var response = JSON.parse(xhr.responseText);
 
-            var np = document.getElementById("np" + element);
-            var np_data = document.getElementById("np" + element + "_data");
+            var np = document.getElementById("np" + getVisibleNum());
+            var np_data = document.getElementById("np" + getVisibleNum() + "_data");
 
-            if (np_data.innerHTML != response.nowplaying) {
+            if (np_data.innerHTML.trim() != response.nowplaying.trim()) {
 
-                if (element == 1)
-                    element = 2;
-                else
-                    element = 1;
-
-                var npx = document.getElementById("np" + element);
-                var npx_data = document.getElementById("np" + element + "_data");
+                var npx = document.getElementById("np" + getInvisibleNum());
+                var npx_data = document.getElementById("np" + getInvisibleNum() + "_data");
 
                 npx_data.innerHTML = response.nowplaying;
 
