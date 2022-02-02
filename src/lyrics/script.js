@@ -1,3 +1,5 @@
+var resp_old = "";
+
 function insertLyrics(data) {
     var lyrics = document.getElementById("lyrics");
     var lyrics_data = document.getElementById("lyrics_data");
@@ -33,12 +35,15 @@ function insertLyrics(data) {
 
 function refresh() {
     xhr = new XMLHttpRequest();
-    var url = "http://luna.thorinair.net:" + port + "/?action=lyrics&key=" + key;
+    var url = "http://luna.local:" + port + "/?action=lyrics&key=" + key;
     xhr.open("GET", url, true);
     xhr.onreadystatechange = function () { 
         if (xhr.readyState == 4 && xhr.status == 200) {
-            var response = JSON.parse(xhr.responseText);
-            insertLyrics(response.lyrics);
+            if (resp_old !== xhr.responseText) {
+                resp_old = xhr.responseText;
+                var response = JSON.parse(xhr.responseText);
+                insertLyrics(response.lyrics);
+            }
         }
     }
     xhr.onerror = function () {
