@@ -28,8 +28,9 @@ span div {
 }
 
 img {
-    height: 100%;
-    width: 100%;
+    margin: 1%;
+    height: 80%;
+    width: 98%;
     object-fit: contain;
     border-radius: 8px;
 }
