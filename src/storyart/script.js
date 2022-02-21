@@ -42,6 +42,8 @@ function insertArt(data) {
             // Was faded before
             if (art.classList.contains("art_fade"))
                 art.classList.toggle('art_fade');
+            if (art.classList.contains("art_bg"))
+                art.classList.toggle('art_bg');
 
             art_bg_timeout = window.setTimeout(function() {
                 art.classList.toggle('art_bg');
